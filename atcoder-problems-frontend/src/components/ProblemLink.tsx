@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Tooltip } from "reactstrap";
 import * as Url from "../utils/Url";
 import { getRatingColorClass } from "../utils";
-import ProblemModel from "../interfaces/ProblemModel";
-import { RatingInfo } from "../utils/RatingInfo";
 import { DifficultyCircle } from "./DifficultyCircle";
 import { NewTabLink } from "./NewTabLink";
 
@@ -12,11 +10,10 @@ interface Props {
   problemId: string;
   contestId: string;
   problemTitle: string;
+  difficulty?: number | null;
   showDifficulty?: boolean;
   isExperimentalDifficulty?: boolean;
   showDifficultyUnavailable?: boolean;
-  problemModel?: ProblemModel | null;
-  userRatingInfo?: RatingInfo | null;
 }
 
 export const ProblemLink: React.FC<Props> = (props) => {
@@ -26,11 +23,10 @@ export const ProblemLink: React.FC<Props> = (props) => {
     contestId,
     problemId,
     problemTitle,
+    difficulty,
     showDifficulty,
     isExperimentalDifficulty,
     showDifficultyUnavailable,
-    problemModel,
-    userRatingInfo,
   } = props;
   const link = (
     <NewTabLink
@@ -40,12 +36,10 @@ export const ProblemLink: React.FC<Props> = (props) => {
       {problemTitle}
     </NewTabLink>
   );
-
-  const difficulty = problemModel?.difficulty;
   if (
     !showDifficulty ||
-    problemModel === undefined ||
-    (difficulty === undefined && !showDifficultyUnavailable)
+    difficulty === undefined ||
+    (difficulty === null && !showDifficultyUnavailable)
   ) {
     return link;
   }
@@ -53,15 +47,10 @@ export const ProblemLink: React.FC<Props> = (props) => {
   const uniqueId = problemId + "-" + contestId;
   const experimentalIconId = "experimental-" + uniqueId;
   const ratingColorClass =
-    difficulty === undefined ? undefined : getRatingColorClass(difficulty);
-
+    difficulty === null ? undefined : getRatingColorClass(difficulty);
   return (
     <>
-      <DifficultyCircle
-        id={uniqueId}
-        problemModel={problemModel}
-        userRatingInfo={userRatingInfo}
-      />
+      <DifficultyCircle id={uniqueId} difficulty={difficulty} />
       {isExperimentalDifficulty ? (
         <>
           <span id={experimentalIconId} role="img" aria-label="experimental">

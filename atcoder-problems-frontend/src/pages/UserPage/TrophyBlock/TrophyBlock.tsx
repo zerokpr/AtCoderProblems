@@ -38,7 +38,7 @@ export const TrophyBlock = (props: Props): JSX.Element => {
     )
   );
 
-  const achievedTrophies = trophies;
+  const achievedTrophies = trophies.filter((t) => t.achieved);
 
   const [filterGroup, setFilterGroup] = useState<TrophyGroup | "All">("All");
   const filteredTrophies = achievedTrophies
@@ -80,13 +80,13 @@ export const TrophyBlock = (props: Props): JSX.Element => {
         <Col md="12" lg="9">
           <Table striped hover>
             <tbody>
-              {filteredTrophies.map(({ sortId, title, reason, achieved }) => (
+              {filteredTrophies.map(({ sortId, title, reason }) => (
                 <tr key={sortId}>
                   <th className="text-success">
-                    {achieved && <Octicon icon={Verified} />}
+                    <Octicon icon={Verified} />
                   </th>
                   <td>
-                    <b>{achieved ? title : "???"}</b>
+                    <b>{title}</b>
                   </td>
                   <td>{reason}</td>
                 </tr>

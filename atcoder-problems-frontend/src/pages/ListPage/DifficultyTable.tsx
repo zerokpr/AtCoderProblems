@@ -125,17 +125,10 @@ export const DifficultyTable: React.FC<Props> = (props) => {
                   }
                 >
                   <DifficultyCircle
-                    problemModel={{
-                      slope: undefined,
-                      difficulty:
-                        difficulties.get(difficultyLevel, { from: INF_POINT })
-                          .from + 399,
-                      rawDifficulty: undefined,
-                      intercept: undefined,
-                      discrimination: undefined,
-                      is_experimental: false,
-                      variance: undefined,
-                    }}
+                    difficulty={
+                      difficulties.get(difficultyLevel, { from: INF_POINT })
+                        .from + 399
+                    }
                     id={`difficulty-table-level-${difficultyLevel}`}
                   />
                   {difficulties.get(difficultyLevel, { from: 0 }).from}-

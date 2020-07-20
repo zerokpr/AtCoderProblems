@@ -209,9 +209,7 @@ const InnerContestConfig: React.FC<InnerProps> = (props) => {
               onChange={(e): void => setStartHour(Number(e.target.value))}
             >
               {Range(0, 24).map((i) => (
-                <option key={i} value={i}>
-                  {i.toFixed().padStart(2, "0")}
-                </option>
+                <option key={i}>{i.toFixed().padStart(2, "0")}</option>
               ))}
             </Input>
             <Input
@@ -220,9 +218,7 @@ const InnerContestConfig: React.FC<InnerProps> = (props) => {
               onChange={(e): void => setStartMinute(Number(e.target.value))}
             >
               {Range(0, 60, 5).map((i) => (
-                <option key={i} value={i}>
-                  {i.toFixed().padStart(2, "0")}
-                </option>
+                <option key={i}>{i.toFixed().padStart(2, "0")}</option>
               ))}
             </Input>
           </InputGroup>
@@ -244,9 +240,7 @@ const InnerContestConfig: React.FC<InnerProps> = (props) => {
               onChange={(e): void => setEndHour(Number(e.target.value))}
             >
               {Range(0, 24).map((i) => (
-                <option key={i} value={i}>
-                  {i.toFixed().padStart(2, "0")}
-                </option>
+                <option key={i}>{i.toFixed().padStart(2, "0")}</option>
               ))}
             </Input>
             <Input
@@ -255,9 +249,7 @@ const InnerContestConfig: React.FC<InnerProps> = (props) => {
               onChange={(e): void => setEndMinute(Number(e.target.value))}
             >
               {Range(0, 60, 5).map((i) => (
-                <option key={i} value={i}>
-                  {i.toFixed().padStart(2, "0")}
-                </option>
+                <option key={i}>{i.toFixed().padStart(2, "0")}</option>
               ))}
             </Input>
           </InputGroup>

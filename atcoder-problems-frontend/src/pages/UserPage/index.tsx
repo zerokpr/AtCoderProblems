@@ -208,7 +208,6 @@ const InnerUserPage: React.FC<InnerProps> = (props) => {
             problemModels={convertMap(problemModels)}
             problems={mergedProblems.valueSeq().toArray()}
             submissions={userSubmissions}
-            userRatingInfo={userRatingInfo}
           />
         </>
       )}
