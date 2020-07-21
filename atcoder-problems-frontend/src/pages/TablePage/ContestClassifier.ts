@@ -23,19 +23,15 @@ export const isRatedContest = (contest: Contest): boolean => {
   );
 };
 
-export const classifyOtherRatedContest = (
-  contest: Contest
-): ContestCategory => {
-  if (contest.rate_change === " ~ 1999") {
-    return "ABC-Like";
-  }
-  if (contest.rate_change === " ~ 2799") {
-    return "ARC-Like";
-  }
-  if (contest.rate_change === "All") {
+const classifyOtherRatedContest = (contest: Contest): ContestCategory => {
+  if(contest.rate_change === "All") {
     return "AGC-Like";
   }
-  return "Other Contests";
+  const rated_max = parseInt(contest.rate_change.split(" ").slice(-1)[0],10);
+  if(rated_max < 2000){
+    return "ABC-Like";
+  }
+  return "ARC-Like";
 };
 
 export const classifyContest = (contest: Contest): ContestCategory => {
