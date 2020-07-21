@@ -24,11 +24,11 @@ export const isRatedContest = (contest: Contest): boolean => {
 };
 
 const classifyOtherRatedContest = (contest: Contest): ContestCategory => {
-  if(contest.rate_change === "All") {
+  if (contest.rate_change === "All") {
     return "AGC-Like";
   }
-  const rated_max = parseInt(contest.rate_change.split(" ").slice(-1)[0],10);
-  if(rated_max < 2000){
+  const rated_max = parseInt(contest.rate_change.split(" ").slice(-1)[0], 10);
+  if (rated_max < 2000) {
     return "ABC-Like";
   }
   return "ARC-Like";
